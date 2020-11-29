@@ -15,7 +15,12 @@ class _CardPageState extends State<CardPage> {
       appBar: AppBar(
         title: Text('Cartão do Nubank'),
         backgroundColor: Color.fromRGBO(109, 33, 119, 1),
-        actions: [Icon(Icons.credit_card)],
+        actions: [
+          IconButton(
+            icon: Icon(Icons.credit_card),
+            onPressed: () {},
+          ),
+        ],
       ),
       body: GestureDetector(
         onTap: () {
@@ -127,7 +132,9 @@ class _CardPageState extends State<CardPage> {
                         color: Colors.white,
                       ),
                     ),
-                    Image.asset('assets/images/cirrus.png', height: 60,
+                    Image.asset(
+                      'assets/images/cirrus.png',
+                      height: 60,
                     ),
                   ],
                 ),
