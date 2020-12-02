@@ -28,12 +28,13 @@ class _CardPageState extends State<CardPage> {
             _frontView = !_frontView;
           });
         },
-        child: _frontView ? _frontViewCard() : _backViewCard(),
+        child:
+            _frontView ? _frontViewCardWithStack() : _backViewCardWithStack(),
       ),
     );
   }
 
-  Widget _frontViewCard() {
+  Widget _frontViewCardWithStack() {
     return Center(
       child: Container(
         width: double.infinity,
@@ -43,20 +44,20 @@ class _CardPageState extends State<CardPage> {
           color: Color.fromRGBO(109, 33, 119, 1),
           borderRadius: BorderRadius.circular(10),
         ),
-        child: Padding(
-          padding: EdgeInsets.fromLTRB(50, 20, 20, 0),
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Image.asset(
-                    'assets/images/mastercard.png',
-                    height: 65,
-                  ),
-                ],
+        child: Stack(
+          children: [
+            Positioned(
+              right: 20,
+              top: 20,
+              child: Image.asset(
+                'assets/images/mastercard.png',
+                height: 65,
               ),
-              Row(
+            ),
+            Positioned(
+              top: 85,
+              left: 50,
+              child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Image.asset(
@@ -73,10 +74,11 @@ class _CardPageState extends State<CardPage> {
                   ),
                 ],
               ),
-              SizedBox(
-                height: 30,
-              ),
-              Row(
+            ),
+            Positioned(
+              bottom: 45,
+              left: 50,
+              child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Image.asset(
@@ -93,14 +95,14 @@ class _CardPageState extends State<CardPage> {
                   ),
                 ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
   }
 
-  Widget _backViewCard() {
+  Widget _backViewCardWithStack() {
     return Center(
       child: Container(
         width: double.infinity,
@@ -110,37 +112,36 @@ class _CardPageState extends State<CardPage> {
           color: Color.fromRGBO(109, 33, 119, 1),
           borderRadius: BorderRadius.circular(10),
         ),
-        child: Padding(
-          padding: EdgeInsets.fromLTRB(0, 25, 0, 20),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Container(
-                height: 90,
-                color: Colors.white,
-              ),
-              Padding(
-                padding: EdgeInsets.fromLTRB(40, 0, 20, 0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      '9999 9999 9999 9999',
-                      style: TextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
+        child: Stack(
+          children: [
+            Container(
+              margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
+              height: 80,
+              color: Colors.white,
+            ),
+            Positioned(
+              left: 40,
+              right: 20,
+              bottom: 20,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    '9999 9999 9999 9999',
+                    style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
                     ),
-                    Image.asset(
-                      'assets/images/cirrus.png',
-                      height: 60,
-                    ),
-                  ],
-                ),
+                  ),
+                  Image.asset(
+                    'assets/images/cirrus.png',
+                    height: 60,
+                  ),
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
